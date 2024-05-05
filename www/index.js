@@ -1,5 +1,7 @@
-import  {Universe,Cell }  from 'game-of-life';
-import * as wasm from "game-of-life/game_of_life_bg.wasm";
+import  {Universe,Cell }  from '../pkg/game-of-life';
+import * as wasm from "../pkg/game-of-life_bg.wasm";
+import { __wbg_set_wasm } from "../pkg/game-of-life_bg.js";
+__wbg_set_wasm(wasm);
 const CELL_SIZE = 5; // px
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";
@@ -42,7 +44,7 @@ const bitIsSet = (n, arr) => {
 };
 const drawCells = () => {
   const cellsPtr = universe.cells();
-  const cells = new Uint8Array(wasm.memory.buffer, cellsPtr, width * height/8);
+  const cells =new Uint8Array(wasm.memory.buffer, cellsPtr, width * height/8);
 
   ctx.beginPath();
 

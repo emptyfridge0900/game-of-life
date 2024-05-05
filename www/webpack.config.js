@@ -14,12 +14,12 @@ module.exports = {
         // new HtmlWebpackPlugin({
         //     template: "index.html"
         // }),
-        // new WasmPackPlugin({
-        //     crateDirectory: path.resolve(__dirname,"."),//__dirname is www
-        //     //outDir: "pkg",
-        //     //outName:"game-of-life",
-        //     //args: '--log-level warn'
-        // })
+        new WasmPackPlugin({
+            crateDirectory: path.resolve(__dirname,".."),//__dirname is www
+            //outDir: path.resolve("./pkg"),
+            outName:"game-of-life",
+            //args: '--log-level warn'
+        })
     ],
     mode: 'development',
     experiments: {

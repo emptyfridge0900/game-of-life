@@ -1,7 +1,5 @@
-import  {Universe,Cell }  from '../pkg/game-of-life';
+import  {Universe,Cell }  from '../pkg';
 import * as wasm from "../pkg/game-of-life_bg.wasm";
-import { __wbg_set_wasm } from "../pkg/game-of-life_bg.js";
-__wbg_set_wasm(wasm);
 const CELL_SIZE = 5; // px
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";

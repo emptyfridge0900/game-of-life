@@ -16,7 +16,7 @@ module.exports = {
         // }),
         new WasmPackPlugin({
             crateDirectory: path.resolve(__dirname,".."),//__dirname is www
-            //outDir: path.resolve("./pkg"),
+            outDir: path.resolve("../pkg"),
             outName:"game-of-life",
             //args: '--log-level warn'
         })

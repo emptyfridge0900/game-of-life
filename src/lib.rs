@@ -3,13 +3,13 @@ mod utils;
 use wasm_bindgen::prelude::*;
 use fixedbitset::FixedBitSet;
 
-#[wasm_bindgen]
-#[repr(u8)]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Cell {
-    Dead = 0,
-    Alive = 1,
-}
+// #[wasm_bindgen]
+// #[repr(u8)]
+// #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+// pub enum Cell {
+//     Dead = 0,
+//     Alive = 1,
+// }
 
 #[wasm_bindgen(js_name=Universe)]
 pub struct Universe {
@@ -94,6 +94,31 @@ impl Universe {
     pub fn cells(&self) -> *const usize {
         self.cells.as_slice().as_ptr()
     }
+
+    pub fn set_width(&mut self, width: u32) {
+        self.width = width;
+        let size = (width * self.height) as usize;
+        self.cells = FixedBitSet::with_capacity(size);
+        for i in 0..size{
+            self.cells.set(i as usize, false);
+        }
+    }
+    pub fn set_height(&mut self, height: u32) {
+        self.height = height;
+        let size = (self.width * height) as usize;
+        self.cells = FixedBitSet::with_capacity(size);
+        for i in 0..size{
+            self.cells.set(i as usize, false);
+        }
+    }
+
+    pub fn get_cells(&self)->Vec<usize>{
+        self.cells.as_slice().to_vec()
+    }
+
+    pub fn set_cell(&mut self,row:u32,col:u32){
+            let idx = self.get_index(row, col);
+            self.cells.set(idx,true);
+    }
     
 }
-

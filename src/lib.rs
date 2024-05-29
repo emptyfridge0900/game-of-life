@@ -120,5 +120,13 @@ impl Universe {
             let idx = self.get_index(row, col);
             self.cells.set(idx,true);
     }
+    pub fn toggle_cell(&mut self, row: u32, column: u32) {
+        let idx = self.get_index(row, column);
+        let val = self.cells[idx];
+        self.cells.set(idx, match val{
+            true=>false,
+            false=>true
+        })
+    }
     
 }

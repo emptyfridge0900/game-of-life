@@ -48,7 +48,7 @@ jobs:
         with:
           repo: emptyfridge/game-of-life
           target_branch: gh-pages
-          build_dir: build
+          build_dir: dist-for-deploy
           keep_history: false
           jekyll: false
         env:
